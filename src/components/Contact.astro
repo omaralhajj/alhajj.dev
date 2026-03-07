@@ -1,0 +1,30 @@
+---
+const links = [
+  { label: 'Email', href: 'mailto:omar@alhajj.dev', display: 'omar@alhajj.dev' },
+  { label: 'GitHub', href: 'https://github.com/yourusername', display: 'github.com/yourusername' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', display: 'linkedin.com/in/yourusername' },
+]
+---
+
+<section id="contact" class="max-w-2xl mx-auto px-6 py-16 border-t fade-in" style="border-color: var(--color-border);">
+  <h2 class="font-mono text-sm mb-6" style="color: var(--color-accent);">Contact</h2>
+  <p class="text-base leading-relaxed mb-8" style="color: var(--color-text-muted);">
+    I'm always open to interesting conversations, opportunities, or just a hello.
+  </p>
+  <div class="space-y-3">
+    {links.map(link => (
+      <div class="flex items-center gap-4">
+        <span class="font-mono text-xs w-16" style="color: var(--color-text-muted);">{link.label}</span>
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm transition-colors hover:text-[var(--color-accent)]"
+          style="color: var(--color-text);"
+        >
+          {link.display}
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
