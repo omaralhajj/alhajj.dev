@@ -1,0 +1,66 @@
+---
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+]
+---
+
+<header class="sticky top-0 z-50 border-b" style="background-color: var(--color-bg); border-color: var(--color-border);">
+  <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-mono text-sm font-medium" style="color: var(--color-accent);">
+      alhajj.dev
+    </a>
+
+    <nav class="flex items-center gap-6">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-sm transition-colors hover:text-[var(--color-accent)]"
+          style="color: var(--color-text-muted);"
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <button
+        id="theme-toggle"
+        aria-label="Toggle dark mode"
+        class="ml-2 p-1 rounded transition-colors hover:text-[var(--color-accent)]"
+        style="color: var(--color-text-muted);"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('theme-toggle')
+  const sun = document.getElementById('icon-sun')
+  const moon = document.getElementById('icon-moon')
+  const root = document.documentElement
+
+  function updateIcons() {
+    const isDark = root.classList.contains('dark')
+    sun!.classList.toggle('hidden', !isDark)
+    moon!.classList.toggle('hidden', isDark)
+  }
+
+  updateIcons()
+
+  toggle!.addEventListener('click', () => {
+    root.classList.toggle('dark')
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light')
+    updateIcons()
+  })
+</script>
