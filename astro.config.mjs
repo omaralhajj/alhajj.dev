@@ -8,6 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: "https://omaralhajj.github.io",
-  base: "/alhajj.dev"
+  site: "https://alhajj.dev",
 });
