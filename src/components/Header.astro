@@ -18,6 +18,7 @@ const navLinks = [
       {navLinks.map(link => (
         <a
           href={link.href}
+          data-nav={link.href.slice(1)}
           class="text-xs sm:text-sm header-link"
         >
           {link.label}

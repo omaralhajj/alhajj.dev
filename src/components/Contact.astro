@@ -13,16 +13,56 @@ const links = [
     {links.map(link => (
       <div class="flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-4">
         <span class="font-mono text-xs sm:w-16" style="color: var(--color-text-muted);">{link.label}</span>
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm break-all transition-colors hover:text-[var(--color-accent)]"
-          style="color: var(--color-text);"
-        >
-          {link.display}
-        </a>
+        <div class="flex items-center gap-2">
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm break-all transition-colors hover:text-[var(--color-accent)]"
+            style="color: var(--color-text);"
+          >
+            {link.display}
+          </a>
+          <button
+            class="copy-btn header-icon-btn shrink-0"
+            data-copy={link.href}
+            aria-label={`Copy ${link.label} link`}
+          >
+            <!-- Copy icon -->
+            <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <!-- Check icon (shown after copy) -->
+            <svg class="check-icon hidden" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </div>
       </div>
     ))}
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach(btn => {
+    const copyIcon = btn.querySelector('.copy-icon')!
+    const checkIcon = btn.querySelector('.check-icon')!
+    let timeout: ReturnType<typeof setTimeout>
+
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy!
+      await navigator.clipboard.writeText(text)
+
+      copyIcon.classList.add('hidden')
+      checkIcon.classList.remove('hidden')
+      btn.style.color = 'var(--color-accent)'
+
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        copyIcon.classList.remove('hidden')
+        checkIcon.classList.add('hidden')
+        btn.style.color = ''
+      }, 2000)
+    })
+  })
+</script>

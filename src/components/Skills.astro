@@ -26,10 +26,10 @@ const skills = [
 <section id="skills" class="col py-12 sm:py-16 border-t fade-in" style="border-color: var(--color-border);">
   <h2 class="font-mono text-sm mb-6" style="color: var(--color-accent);">Skills</h2>
   <div class="flex flex-wrap gap-2">
-    {skills.map(skill => (
+    {skills.map((skill, i) => (
       <span
-        class="font-mono text-xs px-3 py-1.5 rounded border"
-        style="color: var(--color-text-muted); border-color: var(--color-border); background-color: var(--color-card);"
+        class="skill-tag font-mono text-xs px-3 py-1.5 rounded border"
+        style={`color: var(--color-text-muted); border-color: var(--color-border); background-color: var(--color-card); animation-delay: ${i * 45}ms`}
       >
         {skill}
       </span>
