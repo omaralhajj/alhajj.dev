@@ -1,22 +1,24 @@
 ---
 const projects = [
   {
-    name: 'Project Alpha',
-    description: 'A short description of what this project does and why it exists.',
-    tech: ['TypeScript', 'React', 'PostgreSQL'],
-    url: '#',
+    name: 'Developer Platform Migration Program',
+    description: 'Drove migration enablement from legacy source control and CI tooling to GitHub-based workflows, including operational setup for on-prem runner infrastructure.',
+    tech: ['GitHub', 'Kubernetes', 'Jenkins', 'CI/CD'],
   },
   {
-    name: 'Project Beta',
-    description: 'A short description of what this project does and why it exists.',
-    tech: ['Go', 'Docker', 'AWS'],
-    url: '#',
+    name: 'Artifactory Modernization',
+    description: 'Re-architected production artifact infrastructure from legacy Windows hosting to a highly available OpenShift platform to improve resilience and maintainability.',
+    tech: ['Artifactory', 'OpenShift', 'Docker', 'Helm'],
   },
   {
-    name: 'Project Gamma',
-    description: 'A short description of what this project does and why it exists.',
-    tech: ['Python', 'FastAPI', 'Redis'],
-    url: '#',
+    name: 'Personal NAS and Homelab Setup',
+    description: 'Built and maintained a personal NAS environment across custom hardware and Mac Mini systems for reliable storage, backup automation, and experimentation.',
+    tech: ['Linux', 'Networking', 'Storage', 'Automation'],
+  },
+  {
+    name: 'iOS App Learning Track',
+    description: 'Ongoing personal project focused on Swift and iOS frameworks, with emphasis on creating practical and user-friendly mobile experiences.',
+    tech: ['Swift', 'iOS', 'Mobile UX'],
   },
 ]
 ---
@@ -25,10 +27,7 @@ const projects = [
   <h2 class="font-mono text-sm mb-8" style="color: var(--color-accent);">Projects</h2>
   <div class="space-y-4">
     {projects.map(project => (
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
+      <article
         class="block p-5 rounded-lg border transition-colors hover:border-[var(--color-accent)]"
         style="background-color: var(--color-card); border-color: var(--color-border);"
       >
@@ -41,7 +40,7 @@ const projects = [
             </span>
           ))}
         </div>
-      </a>
+      </article>
     ))}
   </div>
 </section>

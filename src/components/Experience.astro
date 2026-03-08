@@ -1,38 +1,65 @@
 ---
 const experience = [
   {
-    role: 'Senior Software Engineer',
-    company: 'Company Name',
-    period: '2023 — Present',
-    description: 'Brief description of responsibilities and key achievements at this role.',
+    role: "Senior Software Developer",
+    company: "Bankdata",
+    period: "Jan 2024 — Present",
+    description:
+      "Leading the migration from Bitbucket and Jenkins to GitHub, including on-premises GitHub runners on Kubernetes. Driving CI/CD improvements that increase delivery speed, reliability, and developer experience.",
   },
   {
-    role: 'Software Engineer',
-    company: 'Another Company',
-    period: '2021 — 2023',
-    description: 'Brief description of responsibilities and key achievements at this role.',
+    role: "Software Developer",
+    company: "Bankdata",
+    period: "Nov 2019 — Dec 2023",
+    description:
+      "Led a production-critical Artifactory migration from legacy Windows Server infrastructure to a highly available OpenShift setup. Supported the transition from fully on-prem infrastructure to a hybrid private-cloud model and built self-service pipelines for engineering teams.",
   },
   {
-    role: 'Junior Developer',
-    company: 'First Company',
-    period: '2019 — 2021',
-    description: 'Brief description of responsibilities and key achievements at this role.',
+    role: "Intern, Junior Developer",
+    company: "EG Silkeborg Data",
+    period: "Feb 2018 — Jan 2019",
+    description: "Developed and maintained frontend features for an enterprise payroll platform using Angular, TypeScript, HTML, and CSS.",
   },
-]
+];
 ---
 
-<section id="experience" class="col py-16 border-t fade-in" style="border-color: var(--color-border);">
-  <h2 class="font-mono text-sm mb-8" style="color: var(--color-accent);">Experience</h2>
+<section
+  id="experience"
+  class="col py-16 border-t fade-in"
+  style="border-color: var(--color-border);"
+>
+  <h2 class="font-mono text-sm mb-8" style="color: var(--color-accent);">
+    Experience
+  </h2>
   <div class="space-y-10">
-    {experience.map(item => (
-      <div class="grid grid-cols-[140px_1fr] gap-6">
-        <p class="font-mono text-xs pt-1" style="color: var(--color-text-muted);">{item.period}</p>
-        <div>
-          <p class="font-medium text-sm mb-0.5" style="color: var(--color-text);">{item.role}</p>
-          <p class="text-sm mb-2" style="color: var(--color-accent);">{item.company}</p>
-          <p class="text-sm leading-relaxed" style="color: var(--color-text-muted);">{item.description}</p>
+    {
+      experience.map((item) => (
+        <div class="grid grid-cols-[140px_1fr] gap-6">
+          <p
+            class="font-mono text-xs pt-1"
+            style="color: var(--color-text-muted);"
+          >
+            {item.period}
+          </p>
+          <div>
+            <p
+              class="font-medium text-sm mb-0.5"
+              style="color: var(--color-text);"
+            >
+              {item.role}
+            </p>
+            <p class="text-sm mb-2" style="color: var(--color-accent);">
+              {item.company}
+            </p>
+            <p
+              class="text-sm leading-relaxed"
+              style="color: var(--color-text-muted);"
+            >
+              {item.description}
+            </p>
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </section>
