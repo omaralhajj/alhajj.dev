@@ -1,38 +1,78 @@
 ---
-const skills = [
-  'Java',
-  'Kotlin',
-  'Python',
-  'JavaScript',
-  'TypeScript',
-  'Angular',
-  'Android',
-  'Docker',
-  'Helm',
-  'Kubernetes',
-  'OpenShift',
-  'Jenkins',
-  'GitHub Actions',
-  'Linux',
-  'Git',
-  'Bash',
-  'PowerShell',
-  'Maven',
-  'Gradle',
-  'NPM',
-]
+const skillGroups = [
+  {
+    name: "Frontend",
+    skills: ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
+  },
+  {
+    name: "Backend",
+    skills: ["Java", "Kotlin", "Python", "Maven", "Gradle", "NPM"],
+  },
+  {
+    name: "Platform",
+    skills: [
+      "Docker",
+      "Helm",
+      "Kubernetes",
+      "OpenShift",
+      "Jenkins",
+      "GitHub Actions",
+      "Linux",
+      "Git",
+      "Bash",
+      "PowerShell",
+    ],
+  },
+  {
+    name: "AI",
+    skills: ["Microsoft Agent Framework", "LangChain/LangGraph"],
+  },
+];
+
+let tagIndex = 0;
+const groupedSkillsWithDelay = skillGroups.map((group) => ({
+  ...group,
+  skills: group.skills.map((name) => ({
+    name,
+    delay: tagIndex++ * 45,
+  })),
+}));
 ---
 
-<section id="skills" class="col py-12 sm:py-16 border-t fade-in" style="border-color: var(--color-border);">
-  <h2 class="font-mono text-sm mb-6" style="color: var(--color-accent);">Skills</h2>
-  <div class="flex flex-wrap gap-2">
-    {skills.map((skill, i) => (
-      <span
-        class="skill-tag font-mono text-xs px-3 py-1.5 rounded border"
-        style={`color: var(--color-text-muted); border-color: var(--color-border); background-color: var(--color-card); animation-delay: ${i * 45}ms`}
-      >
-        {skill}
-      </span>
-    ))}
+<section
+  id="skills"
+  class="col py-12 sm:py-16 border-t fade-in"
+  style="border-color: var(--color-border);"
+>
+  <h2 class="font-mono text-sm mb-6" style="color: var(--color-accent);">
+    Skills
+  </h2>
+  <div class="grid gap-4 sm:gap-5 sm:grid-cols-2">
+    {
+      groupedSkillsWithDelay.map((group) => (
+        <article
+          class="rounded-lg border p-4 sm:p-5"
+          style="border-color: var(--color-border); background-color: var(--color-card);"
+        >
+          <h3
+            class="font-mono text-xs uppercase tracking-wider mb-3"
+            style="color: var(--color-accent);"
+          >
+            {group.name}
+          </h3>
+
+          <div class="flex flex-wrap gap-2">
+            {group.skills.map((skill) => (
+              <span
+                class="skill-tag font-mono text-xs px-3 py-1.5 rounded border"
+                style={`color: var(--color-text-muted); border-color: var(--color-border); background-color: var(--color-bg); animation-delay: ${skill.delay}ms`}
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))
+    }
   </div>
 </section>

@@ -1,46 +1,78 @@
 ---
 const projects = [
   {
-    name: 'Developer Platform Migration Program',
-    description: 'Drove migration enablement from legacy source control and CI tooling to GitHub-based workflows, including operational setup for on-prem runner infrastructure.',
-    tech: ['GitHub', 'Kubernetes', 'Jenkins', 'CI/CD'],
+    name: "COBOL Modernization Using Agentic AI",
+    description:
+      "Collaborated with Microsoft and Bankdata engineers to design an agentic AI workflow for modernizing legacy COBOL into maintainable Java, with a focus on preserving business behavior while accelerating migration.",
+    tech: ["AI", "Semantic Kernel", "Python", "OpenAI"],
+    devblog:
+      "https://devblogs.microsoft.com/all-things-azure/how-we-use-ai-agents-for-cobol-migration-and-mainframe-modernization/",
   },
   {
-    name: 'Artifactory Modernization',
-    description: 'Re-architected production artifact infrastructure from legacy Windows hosting to a highly available OpenShift platform to improve resilience and maintainability.',
-    tech: ['Artifactory', 'OpenShift', 'Docker', 'Helm'],
+    name: "Personal NAS and Homelab Setup",
+    description:
+      "Built and maintained a personal NAS environment across custom hardware and Mac Mini systems for reliable storage, backup automation, and experimentation.",
+    tech: ["Linux", "Networking", "Storage", "Automation"],
   },
   {
-    name: 'Personal NAS and Homelab Setup',
-    description: 'Built and maintained a personal NAS environment across custom hardware and Mac Mini systems for reliable storage, backup automation, and experimentation.',
-    tech: ['Linux', 'Networking', 'Storage', 'Automation'],
+    name: "iOS App Learning Track",
+    description:
+      "Ongoing personal project focused on Swift and iOS frameworks, with emphasis on creating practical and user-friendly mobile experiences.",
+    tech: ["Swift", "iOS", "Mobile UX"],
   },
-  {
-    name: 'iOS App Learning Track',
-    description: 'Ongoing personal project focused on Swift and iOS frameworks, with emphasis on creating practical and user-friendly mobile experiences.',
-    tech: ['Swift', 'iOS', 'Mobile UX'],
-  },
-]
+];
 ---
 
-<section id="projects" class="col py-12 sm:py-16 border-t fade-in" style="border-color: var(--color-border);">
-  <h2 class="font-mono text-sm mb-8" style="color: var(--color-accent);">Projects</h2>
+<section
+  id="projects"
+  class="col py-12 sm:py-16 border-t fade-in"
+  style="border-color: var(--color-border);"
+>
+  <h2 class="font-mono text-sm mb-8" style="color: var(--color-accent);">
+    Projects
+  </h2>
   <div class="space-y-4">
-    {projects.map(project => (
-      <article
-        class="block p-5 rounded-lg border transition-colors hover:border-[var(--color-accent)]"
-        style="background-color: var(--color-card); border-color: var(--color-border);"
-      >
-        <p class="font-medium text-sm mb-1.5" style="color: var(--color-text);">{project.name}</p>
-        <p class="text-sm leading-relaxed mb-3" style="color: var(--color-text-muted);">{project.description}</p>
-        <div class="flex flex-wrap gap-1.5">
-          {project.tech.map(tag => (
-            <span class="font-mono text-xs px-2 py-0.5 rounded" style="color: var(--color-accent); background-color: var(--color-bg);">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </article>
-    ))}
+    {
+      projects.map((project) => (
+        <article
+          class="block p-5 rounded-lg border transition-colors hover:border-[var(--color-accent)]"
+          style="background-color: var(--color-card); border-color: var(--color-border);"
+        >
+          <p
+            class="font-medium text-sm mb-1.5"
+            style="color: var(--color-text);"
+          >
+            {project.name}
+          </p>
+          <p
+            class="text-sm leading-relaxed mb-3"
+            style="color: var(--color-text-muted);"
+          >
+            {project.description}
+          </p>
+          {project.devblog && (
+            <a
+              href={project.devblog}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block text-sm mb-3 underline underline-offset-2 transition-colors hover:text-[var(--color-accent)]"
+              style="color: var(--color-text);"
+            >
+              Read devblog
+            </a>
+          )}
+          <div class="flex flex-wrap gap-1.5">
+            {project.tech.map((tag) => (
+              <span
+                class="font-mono text-xs px-2 py-0.5 rounded"
+                style="color: var(--color-accent); background-color: var(--color-bg);"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))
+    }
   </div>
 </section>
