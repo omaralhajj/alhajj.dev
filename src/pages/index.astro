@@ -44,11 +44,16 @@ import Footer from '../components/Footer.astro'
 
   function updateActiveNav() {
     let current = ''
-    sections.forEach(section => {
-      if (section.getBoundingClientRect().top <= 120) {
-        current = section.id
-      }
-    })
+    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 10
+    if (atBottom && sections.length) {
+      current = sections[sections.length - 1].id
+    } else {
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= 120) {
+          current = section.id
+        }
+      })
+    }
     navLinks.forEach(link => {
       link.classList.toggle('header-link--active', link.dataset.nav === current)
     })
